@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Rancho Websites builds simple, affordable websites for small businesses in Southern California. Sites from $400, free mockup, call or text 951-455-0359.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Rancho Websites</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: single scrolling storefront. Sand page, saguaro-green bands, the logo's tile shape reused for the price cards. */
+:root{
+  --bg:#EFE6D6; --surface:#FFFFFF; --ink:#1E2A23; --muted:#46534A; --line:#D8CCB6;
+  --green:#2F5D45; --green-ink:#F4EBDD; --sun:#E39A3B; --dirt:#B8502A; --sun-ink:#7A4A0E;
+  --display:"Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --body:"Inter", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#131A16; --surface:#1B241F; --ink:#EDE6D8; --muted:#A9B5AC; --line:#2C3830;
+  --green:#3E7A5B; --green-ink:#F4EBDD; --sun:#E9A84E; --dirt:#D06A41; --sun-ink:#F2C27E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#131A16; --surface:#1B241F; --ink:#EDE6D8; --muted:#A9B5AC; --line:#2C3830;
+  --green:#3E7A5B; --green-ink:#F4EBDD; --sun:#E9A84E; --dirt:#D06A41; --sun-ink:#F2C27E; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.5px}
+h2{font-size:clamp(30px,4.5vw,44px)}
+h3{font-size:22px}
+p{margin:0}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--dirt)}
+.lede{color:var(--muted);max-width:60ch}
+section{padding-block:72px}
+section+section{border-top:1px solid var(--line)}
+.head{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+
+/* header */
+header{padding-block:18px;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:22px}
+.brand svg{width:42px;height:42px;flex:none}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;flex-wrap:wrap;font-weight:500;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{padding-block:72px 64px}
+.hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(40px,6.4vw,68px)}
+.hero h1 em{font-style:normal;color:var(--green)}
+.hero-copy{display:flex;flex-direction:column;gap:22px;min-width:0}
+.cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:12px;font:600 16px var(--body);text-decoration:none;border:0;cursor:pointer}
+.btn.primary{background:var(--green);color:var(--green-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 2px var(--green)}
+.facts{display:flex;gap:28px;flex-wrap:wrap;font-size:15px;color:var(--muted)}
+.facts b{display:block;font-family:var(--display);font-size:26px;color:var(--ink)}
+.browser{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 40px -24px rgba(30,42,35,.45);overflow:hidden;max-width:100%}
+.browser .bar{display:flex;gap:7px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.browser .bar span{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.browser .bar span:first-child{background:var(--dirt)}
+.browser .shot{padding:22px;display:flex;flex-direction:column;gap:12px}
+.shot .sk{height:12px;border-radius:6px;background:var(--line)}
+.shot .title{height:22px;width:70%;background:var(--ink);opacity:.85;border-radius:6px}
+.shot .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.shot .row div{height:58px;border-radius:10px;background:var(--bg);border:1px solid var(--line)}
+.shot .book{align-self:flex-start;height:34px;width:120px;border-radius:9px;background:var(--sun)}
+.shot .tag{font-size:13px;color:var(--muted)}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.svc{display:flex;flex-direction:column;gap:10px;min-width:0}
+.svc svg{width:36px;height:36px;color:var(--green)}
+.svc p{color:var(--muted);font-size:16px}
+
+/* pricing */
+.pricing{background:var(--green);color:var(--green-ink);border-top:0}
+.pricing .eyebrow{color:var(--sun)}
+.pricing .lede{color:color-mix(in srgb,var(--green-ink) 82%,transparent)}
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.plan{background:var(--surface);color:var(--ink);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.plan .price{font-family:var(--display);font-weight:700;font-size:48px;line-height:1;font-variant-numeric:tabular-nums}
+.plan .price small{font-size:17px;font-weight:500;color:var(--muted)}
+.plan .from{font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.plan ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;font-size:15.5px}
+.plan li{display:flex;gap:10px}
+.plan li svg{flex:none;width:18px;height:18px;margin-top:4px;color:var(--green)}
+.plan.feature{box-shadow:0 0 0 3px var(--sun)}
+.badge{align-self:flex-start;background:var(--sun);color:#2A1A05;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.fineprint{margin-top:16px;font-size:15px;color:color-mix(in srgb,var(--green-ink) 82%,transparent)}
+
+.plans.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tier-title{font-size:24px;margin:44px 0 16px;color:var(--green-ink)}
+.head + .tier-title{margin-top:0}
+.tier-note{margin:-6px 0 18px;max-width:70ch;font-size:15.5px;color:color-mix(in srgb,var(--green-ink) 82%,transparent)}
+.extras{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+.extras div{display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap;padding:14px 18px;border-radius:14px;background:color-mix(in srgb,var(--green-ink) 10%,transparent);font-size:15.5px}
+.extras b{font-variant-numeric:tabular-nums;white-space:nowrap}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;counter-reset:s;list-style:none;margin:0;padding:0}
+.steps li{display:flex;flex-direction:column;gap:8px;min-width:0}
+.steps li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--sun);color:#2A1A05;font:700 18px var(--display)}
+.steps p{color:var(--muted);font-size:16px}
+
+/* work */
+.work{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.work a{display:flex;flex-direction:column;gap:6px;padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--surface);text-decoration:none;min-height:120px}
+.work a:hover{border-color:var(--green)}
+.work .kind{font-size:13px;color:var(--muted)}
+.work .name{font-family:var(--display);font-weight:700;font-size:20px}
+.work .go{margin-top:auto;font-size:14px;font-weight:600;color:var(--green)}
+
+/* hours + contact */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours td{padding:12px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;color:var(--muted)}
+.contact{display:flex;flex-direction:column;gap:18px;min-width:0}
+.phone{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.phone .num{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,40px);user-select:all}
+.copy-note{font-size:14px;color:var(--muted);min-height:1.4em}
+.areas{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.areas li{padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:14px}
+
+footer{padding-block:32px;background:var(--green);color:color-mix(in srgb,var(--green-ink) 85%,transparent);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:820px){
+  .hero .wrap,.split{grid-template-columns:1fr}
+  .services,.plans,.plans.two,.steps{grid-template-columns:1fr}
+  section{padding-block:56px}
+}
+@media (prefers-reduced-motion:no-preference){.btn,.work a{transition:filter .15s,box-shadow .15s,border-color .15s}}
+</style>
+<style>body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Rancho Websites home">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <rect width="200" height="200" rx="46" fill="#2F5D45"/>
+        <circle cx="146" cy="58" r="20" fill="#E39A3B"/>
+        <path d="M86 166 L86 56 A14 14 0 0 1 114 56 L114 166 Z" fill="#F4EBDD"/>
+        <path d="M100 128 L66 128 L66 92" fill="none" stroke="#F4EBDD" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M100 112 L134 112 L134 80" fill="none" stroke="#F4EBDD" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="34" y="166" width="132" height="8" rx="4" fill="#B8502A"/>
+      </svg>
+      Rancho Websites
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Hours &amp; contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Rooted in the Inland Empire</p>
+        <h1>Websites that bring <em>local customers</em> through your door.</h1>
+        <p class="lede">We build simple, fast websites for barbers, salons, restaurants, daycares, groomers and every small shop in between. Your services, prices, hours and a call or book button, all in one place people can find on Google.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Get a free mockup</a>
+          <a class="btn ghost" href="#pricing">See pricing</a>
+        </div>
+        <div class="facts">
+          <div><b>$400</b>sites start at</div>
+          <div><b>~1 week</b>to go live</div>
+          <div><b>$0</b>for your mockup</div>
+        </div>
+      </div>
+      <div class="browser" aria-hidden="true">
+        <div class="bar"><span></span><span></span><span></span></div>
+        <div class="shot">
+          <div class="title"></div>
+          <div class="sk" style="width:90%"></div>
+          <div class="sk" style="width:64%"></div>
+          <div class="row"><div></div><div></div><div></div></div>
+          <div class="book"></div>
+          <div class="tag">yourbusiness.com · works great on phones</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Services</p>
+        <h2>Everything a small business needs online</h2>
+        <p class="lede">No jargon and no long contracts. You tell us about your business, we handle the rest.</p>
+      </div>
+      <div class="services">
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>
+          <h3>Custom website</h3>
+          <p>A clean site with your services, prices, photos, hours and map. Built for phones first, since that's where your customers look.</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4M16 2v4"/><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M9 15l2 2 4-4"/></svg>
+          <h3>Booking and ordering buttons</h3>
+          <p>Hook up the tools you already use, like Square, Booksy, GlossGenius or your online menu, so customers can book or order in one tap.</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <h3>Google listing cleanup</h3>
+          <p>We fix the website link, hours and photos on your Google listing so it points to your real site, not a dead link or someone else's page.</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <h3>Updates when you need them</h3>
+          <p>New prices, holiday hours, a new service? Text us the change and we'll update your site. With a care plan, edits are included every month.</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <h3>Hosting and domain setup</h3>
+          <p>We get your web address, keep the site online and secure, and handle the technical side so you never have to.</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 2.1 21 6l-4 4"/><path d="M3 12V9a3 3 0 0 1 3-3h15"/><path d="m7 21.9-4-4 4-4"/><path d="M21 12v3a3 3 0 0 1-3 3H3"/></svg>
+          <h3>Redesigns</h3>
+          <p>Stuck with an old, slow or "coming soon" site? We'll rebuild it into something you're proud to send people to.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Pricing</p>
+        <h2>Simple prices, no surprises</h2>
+        <p class="lede">One flat build fee, then an optional monthly plan that keeps your site online and up to date. Every build is mobile-first, loads fast, has a secure (https) address and includes your first year of domain registration.</p>
+      </div>
+      <h3 class="tier-title">Website builds</h3>
+      <div class="plans">
+        <div class="plan">
+          <p class="from">Starter · 1 page · about 1 week</p>
+          <p class="price">$400</p>
+          <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Homepage with your services or menu</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Hours, map and photos</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Click-to-call and a contact form</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Google Business Profile linked and checked</li></ul>
+        </div>
+        <div class="plan">
+          <p class="from">Growth · up to 3 pages · about 1–2 weeks</p>
+          <p class="price">$800</p>
+          <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Everything in Starter</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>A separate page for your services or menu</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>A gallery or about page to show off your work</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Google Business Profile setup or cleanup ($150 value)</li></ul>
+        </div>
+        <div class="plan feature">
+          <span class="badge">Most popular</span>
+          <p class="from">Business · up to 5 pages · about 2 weeks</p>
+          <p class="price">$1,200</p>
+          <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Everything in Starter</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Separate pages for services or menu, gallery and about</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Your booking or online-ordering link built in (Square, Clover, Booksy and more)</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Basic local search setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Google Business Profile setup or cleanup ($150 value)</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>First month of the Standard care plan free</li></ul>
+        </div>
+      </div>
+
+      <h3 class="tier-title">Monthly care plans</h3>
+      <p class="tier-note">Every plan includes hosting, domain renewal, security updates and a monthly check that your site loads and every button works. Month to month, cancel anytime.</p>
+      <div class="plans">
+        <div class="plan">
+          <p class="from">Basic</p>
+          <p class="price">$30<small> / month</small></p>
+          <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>1 small edit a month (up to 30 min)</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Changes done within 3 business days</li></ul>
+        </div>
+        <div class="plan">
+          <p class="from">Standard</p>
+          <p class="price">$79<small> / month</small></p>
+          <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Up to 1 hour of edits a month</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Changes done within 1 business day</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Google Business Profile updates: hours, holiday closures, photos</li></ul>
+        </div>
+        <div class="plan">
+          <p class="from">Plus</p>
+          <p class="price">$149<small> / month</small></p>
+          <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Up to 3 hours of edits a month</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Changes done within 1 business day, first in line</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Seasonal promos and specials posted for you</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>A short quarterly report on visits and calls</li></ul>
+        </div>
+      </div>
+      <p class="fineprint">A small edit is a change like new hours, a price update, a swapped photo or a new menu item. Unused hours don't roll over.</p>
+
+      <h3 class="tier-title">Extras</h3>
+      <div class="extras">
+        <div><span>Extra page beyond your package</span><b>$150 per page</b></div>
+        <div><span>Google Business Profile setup or cleanup</span><b>$150 one time</b></div>
+        <div><span>Logo refresh (simple wordmark)</span><b>$150 one time</b></div>
+        <div><span>Website edits without a care plan</span><b>$60/hour, 30-min minimum</b></div>
+        <div><span>Domain renewal without a care plan</span><b>$25 per year</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">How it works</p>
+        <h2>From first call to live site in about a week</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Get a free mockup</h3><p>Call or text us about your business. We design a one-page preview of your new homepage at no cost.</p></li>
+        <li><h3>50% to start</h3><p>Like it? Pay half to get going. The rest is due when you approve the finished site and it goes live.</p></li>
+        <li><h3>Two rounds of changes</h3><p>Every build includes two rounds of edits, so it ends up exactly how you want it.</p></li>
+        <li><h3>You own it</h3><p>Your domain is registered in your business's name, and you keep the site even if you cancel your care plan.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Our work</p>
+        <h2>See what your site could look like</h2>
+        <p class="lede">Sample sites we've designed for different kinds of businesses, plus a live site for a local rental company.</p>
+      </div>
+      <div class="work">
+        <a href="https://claude.ai/artifact/B44e2TVfJkfQ7tGGZgkUS3" target="_blank" rel="noopener"><span class="kind">Mexican restaurant</span><span class="name">La Lumbre Cocina</span><span class="go">View sample →</span></a>
+        <a href="https://claude.ai/artifact/PtUhTakir3khRZhMNMsGdT" target="_blank" rel="noopener"><span class="kind">Greek restaurant</span><span class="name">Kyma Greek Taverna</span><span class="go">View sample →</span></a>
+        <a href="https://claude.ai/artifact/1fHvo21s22kcW7crRgkWhY" target="_blank" rel="noopener"><span class="kind">Steakhouse</span><span class="name">Ironwood Chophouse</span><span class="go">View sample →</span></a>
+        <a href="https://claude.ai/artifact/7H3Vc3tbMcFADpFmQE2Ny8" target="_blank" rel="noopener"><span class="kind">Cocktail bar</span><span class="name">The Saguaro Room</span><span class="go">View sample →</span></a>
+        <a href="https://ranchorentalshq.com" target="_blank" rel="noopener"><span class="kind">Party rentals · live site</span><span class="name">Rancho Rentals</span><span class="go">Visit site →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap split">
+      <div class="contact">
+        <p class="eyebrow">Contact</p>
+        <h2>Ask for your free mockup</h2>
+        <p class="lede">Call or text and tell us your business name. We'll take it from there.</p>
+        <div class="phone">
+          <span class="num" id="phone">951-455-0359</span>
+          <button class="btn ghost" id="copy" type="button">Copy number</button>
+        </div>
+        <p class="copy-note" id="copy-note" aria-live="polite"></p>
+        <div>
+          <p style="font-weight:600;margin-bottom:10px">Serving</p>
+          <ul class="areas">
+            <li>Southern California</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:12px">Hours</p>
+        <table class="hours">
+          <tbody><tr><td>Monday – Sunday</td><td>Open 24 hours</td></tr></tbody>
+        </table>
+        <p class="copy-note" style="margin-top:12px">Call or text any time, day or night.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Rancho Websites</span>
+    <span>Websites for Inland Empire small businesses · 951-455-0359</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('copy').addEventListener('click', function(){
+  var note=document.getElementById('copy-note'), num=document.getElementById('phone').textContent;
+  function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('phone'));var s=window.getSelection();s.removeAllRanges();s.addRange(r);note.textContent='Number selected. Press copy on your keyboard or phone.';}
+  try{navigator.clipboard.writeText(num).then(function(){note.textContent='Copied 951-455-0359.';},fallback);}catch(e){fallback();}
+});
+</script>
+</body>
+</html>
